@@ -18,46 +18,46 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Tambah Stok Barang</h4>
-            <form class="forms-sample mt-5" action="/stokbarang/add/post" method="POST">
-              @csrf
+            {{ Form::open(['url' => '/stokbarang/add/post', 'method' => 'post']) }}
+              {{ csrf_field() }}
               <div class="form-group">
-                <label for="namabarang">Nama Barang</label>
-                <input type="text" name="nama_barang" class="form-control @error('nama_barang') is-invalid @enderror" id="namabarang" placeholder="Nama Barang" value="{{ old('nama_barang') }}">
+                {{ Form::label('nama_barang', 'Nama Barang') }}
+                {{ Form::text('nama_barang', null, ['class' => ($errors->has('nama_barang')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Nama Barang']) }}
                 <span style="color:red;"> {{$errors->first('nama_barang')}} </span>
               </div>
               <div class="form-group">
-                <label for="jenis">Jenis</label>
-                <input type="text" name="jenis" class="form-control @error('jenis') is-invalid @enderror" id="jenis" placeholder="Jenis" value="{{ old('jenis') }}">
+                {{ Form::label('jenis', 'Jenis') }}
+                {{ Form::text('jenis', null, ['class' => ($errors->has('jenis')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Jenis']) }}
                 <span style="color:red;"> {{$errors->first('jenis')}} </span>
               </div>
               <div class="form-group">
-                <label for="merk">Merk</label>
-                <input type="text" name="merk" class="form-control @error('merk') is-invalid @enderror" id="merk" placeholder="Merk" value="{{ old('merk') }}">
+                {{ Form::label('merk', 'Merk') }}
+                {{ Form::text('merk', null, ['class' => ($errors->has('merk')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'merk']) }}
                 <span style="color:red;"> {{$errors->first('merk')}} </span>
               </div>
               <div class="form-group">
-                <label for="ukuran">Ukuran</label>
-                <input type="text" name="ukuran" class="form-control @error('ukuran') is-invalid @enderror" id="ukuran" placeholder="Ukuran" value="{{ old('ukuran') }}">
+                {{ Form::label('ukuran', 'Ukuran') }}
+                {{ Form::text('ukuran', null, ['class' => ($errors->has('ukuran')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Ukuran']) }}
                 <span style="color:red;"> {{$errors->first('ukuran')}} </span>
               </div>
               <div class="form-group">
-                <label for="stok">Stok</label>
-                <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="Stok" value="{{ old('stok') }}">
+                {{ Form::label('stok', 'Stok') }}
+                {{ Form::text('stok', null, ['class' => ($errors->has('stok')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Stok']) }}
                 <span style="color:red;"> {{$errors->first('stok')}} </span>
               </div>
               <div class="form-group">
-                <label for="satuan">Satuan</label>
-                <input type="text" name="satuan" class="form-control @error('satuan') is-invalid @enderror" id="satuan" placeholder="Satuan" value="{{ old('satuan') }}">
+                {{ Form::label('satuan', 'Satuan') }}
+                {{ Form::text('satuan', null, ['class' => ($errors->has('satuan')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Satuan']) }}
                 <span style="color:red;"> {{$errors->first('satuan')}} </span>
               </div>
               <div class="form-group">
-                <label for="lokasi">Lokasi</label>
-                <input type="text" name="lokasi" class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" placeholder="Lokasi" value="{{ old('lokasi') }}">
+                {{ Form::label('lokasi', 'Lokasi') }}
+                {{ Form::text('lokasi', null, ['class' => ($errors->has('lokasi')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Lokasi']) }}
                 <span style="color:red;"> {{$errors->first('lokasi')}} </span>
               </div>
-              <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              {{ Form::submit('Save', ['class' => 'btn btn-primary mr-2']) }}
               <a href="/stokbarang"><button type="button" class="btn btn-light">Cancel</button></a>
-            </form>
+            {{ Form::close() }}
           </div>
         </div>
       </div>

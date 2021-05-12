@@ -17,11 +17,16 @@
     <div class="col-lg-12 stretch-card grid-margin">
         <div class="card">
           <div class="card-body">
-          
-            <div class="float-md-right">
+          <div class="row">
+            <div class="col-8"><h4 class="card-title mb-5">Tabel Stok Barang</h4></div>
+            <div class="col-4 text-right">
+              <a href="/stokbarang/add" class="mr-4"><button type="button" class="btn btn-success btn-sm">Tambah Stok Barang</button></a>
+            </div>
+          </div>
+            <!-- <div class="float-md-right">
                 <a href="/stokbarang/add"><button type="button" class="btn btn-success btn-sm">Tambah Stok Barang</button></a>
             </div><br>
-            <h4 class="card-title text-center mb-5">Tabel Stok Barang</h4>
+            <h4 class="card-title text-center mb-5">Tabel Stok Barang</h4> -->
             <table id="example" class="table table-bordered">
               <thead>
                 <tr class="table-success">
@@ -33,6 +38,7 @@
                   <th> Stok </th>
                   <th> Satuan </th>
                   <th> Lokasi </th>
+                  <th> Aksi </th>
                 </tr>
               </thead>
               <tbody>
@@ -47,6 +53,20 @@
                   <td> {{$sb->stok}} </td>
                   <td> {{$sb->satuan}} </td>
                   <td> {{$sb->lokasi}} </td>
+                  <td> <ul class="list-inline m-0">
+                            <li class="list-inline-item">
+                                <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="/stokbarang/edit/{{$sb->id}}"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
+                            </li>
+                            <li class="list-inline-item">
+                              {{ Form::open(['url' => '/stokbarang/delete/'.$sb->id, 'method' => 'delete']) }}
+                                    {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm rounded-0']) }}
+                              {!! Form::close() !!}
+                            </li>
+                        </ul>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>
