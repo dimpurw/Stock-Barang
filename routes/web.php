@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Stok Barang
 Route::get('/stokbarang', 'StockItemController@index');
 Route::get('/stokbarang/add', 'StockItemController@create');
 Route::post('/stokbarang/add/post', 'StockItemController@store');
-Route::get('/stokbarang/edit', 'StockItemController@edit');
+Route::get('/stokbarang/edit/{id}', 'StockItemController@edit');
+Route::post('/stokbarang/edit/{id}/update', 'StockItemController@update');
+Route::delete('/stokbarang/delete/{id}', 'StockItemController@destroy');
 
 Auth::routes();
 
