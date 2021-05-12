@@ -15,8 +15,8 @@ class StockItemController extends Controller
      */
     public function index()
     {
-        $stockbarang = StockItems::get();
-        return view('stock_barang.index', compact(['stockbarang']));
+        $stokbarang = StockItems::get();
+        return view('stok_barang.index', compact(['stokbarang']));
     }
 
     /**
@@ -26,7 +26,7 @@ class StockItemController extends Controller
      */
     public function create()
     {
-        return view('stock_barang.add');
+        return view('stok_barang.add');
     }
 
     public function store(StorePostRequest $request)
@@ -36,8 +36,8 @@ class StockItemController extends Controller
         }
 
         StockItems::create($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
-                                        'stock', 'satuan', 'lokasi'));
-        return redirect('/stockbarang');
+                                        'stok', 'satuan', 'lokasi'));
+        return redirect('/stokbarang');
     }
 
     /**
@@ -59,7 +59,7 @@ class StockItemController extends Controller
      */
     public function edit($id)
     {
-        return view('stock_barang.edit');
+        return view('stok_barang.edit');
     }
 
     /**
@@ -78,7 +78,7 @@ class StockItemController extends Controller
 
         StockItems::updated($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
                                         'stock', 'satuan', 'lokasi'));
-        return redirect('/stockbarang');
+        return redirect('/stokbarang');
     }
 
     /**
