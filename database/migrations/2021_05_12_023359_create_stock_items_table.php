@@ -19,7 +19,7 @@ class CreateStockItemsTable extends Migration
             $table->string('jenis');
             $table->string('merk');
             $table->char('ukuran');
-            $table->integer('stock');
+            $table->integer('stok');
             $table->string('satuan');
             $table->string('lokasi');
             $table->timestamps();
