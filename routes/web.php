@@ -16,18 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('stockbarang', function () {
-    return view('stock_barang.index');
-});
-
-Route::get('stockbarang/add', function () {
-    return view('stock_barang.add');
-});
-
-Route::get('stockbarang/edit', function () {
-    return view('stock_barang.edit');
-});
+Route::get('/stockbarang', 'StockItemController@index');
+Route::get('/stockbarang/add', 'StockItemController@create');
+Route::post('/stockbarang/add/post', 'StockItemController@store');
+Route::get('/stockbarang/edit', 'StockItemController@edit');
 
 Auth::routes();
 
