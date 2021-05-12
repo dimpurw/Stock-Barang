@@ -32,7 +32,7 @@ class StockItemController extends Controller
     public function store(StorePostRequest $request)
     {
         if (isset($request->validator) && $request->validator->fails()) {
-            return redirect()->back()->withErrors($request->validator->messages());
+            return redirect()->back()->withErrors($request->validator);
         }
 
         StockItems::create($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
@@ -59,7 +59,8 @@ class StockItemController extends Controller
      */
     public function edit($id)
     {
-        return view('stok_barang.edit');
+        $stokbarang = StockItems::findOrFail($id);
+        return view('stok_barang.edit', compact(['stokbarang']));
     }
 
     /**
@@ -69,15 +70,14 @@ class StockItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePostRequest $request, $id)
     {
         if (isset($request->validator) && $request->validator->fails()) {
-            dd($request->validator->messages());
-            return redirect()->back()->withErrors($request->validator->messages());
+            return redirect()->back()->withErrors($request->validator);
         }
 
-        StockItems::updated($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
-                                        'stock', 'satuan', 'lokasi'));
+        StockItems::findOrFail($id)->update($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
+                                                            'stock', 'satuan', 'lokasi'));
         return redirect('/stokbarang');
     }
 
@@ -89,6 +89,7 @@ class StockItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        StockItems::destroy($id);
+        return redirect('/stokbarang');   
     }
 }
