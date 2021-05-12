@@ -48,13 +48,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/">
                 <span class="menu-title">Dashboard</span>
                 <i class="icon-screen-desktop menu-icon"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pages/icons/simple-line-icons.html">
+                <a class="nav-link" href="/stockbarang">
                 <span class="menu-title">Stock Barang</span>
                 <i class="icon-briefcase menu-icon"></i>
                 </a>
@@ -66,8 +66,8 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Barang Masuk</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Barang Keluar</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/barangmasuk">Barang Masuk</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/barangkeluar">Barang Keluar</a></li>
                 </ul>
                 </div>
             </li>

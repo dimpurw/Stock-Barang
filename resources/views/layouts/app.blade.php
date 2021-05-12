@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.8/css/fixedHeader.bootstrap4.min.css">
   </head>
   <body>
     <div class="container-scroller">
