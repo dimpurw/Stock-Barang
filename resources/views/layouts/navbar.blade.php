@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/stockbarang">
+                <a class="nav-link" href="/stokbarang">
                 <span class="menu-title">Stock Barang</span>
                 <i class="icon-briefcase menu-icon"></i>
                 </a>

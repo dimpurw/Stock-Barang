@@ -18,7 +18,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Tambah Stok Barang</h4>
-            <form class="forms-sample mt-5" action="/stockbarang/add/post" method="POST">
+            <form class="forms-sample mt-5" action="/stokbarang/add/post" method="POST">
               @csrf
               <div class="form-group">
                 <label for="namabarang">Nama Barang</label>
@@ -41,9 +41,9 @@
                 <span style="color:red;"> {{$errors->first('ukuran')}} </span>
               </div>
               <div class="form-group">
-                <label for="stock">Stock</label>
-                <input type="number" name="stock" class="form-control @error('stock') is-invalid @enderror" id="stock" placeholder="Stock" value="{{ old('stock') }}">
-                <span style="color:red;"> {{$errors->first('stock')}} </span>
+                <label for="stok">Stok</label>
+                <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="Stok" value="{{ old('stok') }}">
+                <span style="color:red;"> {{$errors->first('stok')}} </span>
               </div>
               <div class="form-group">
                 <label for="satuan">Satuan</label>
@@ -56,7 +56,7 @@
                 <span style="color:red;"> {{$errors->first('lokasi')}} </span>
               </div>
               <button type="submit" class="btn btn-primary mr-2">Submit</button>
-              <a href="/stockbarang"><button type="button" class="btn btn-light">Cancel</button></a>
+              <a href="/stokbarang"><button type="button" class="btn btn-light">Cancel</button></a>
             </form>
           </div>
         </div>

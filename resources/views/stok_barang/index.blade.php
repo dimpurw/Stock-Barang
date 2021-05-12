@@ -19,7 +19,7 @@
           <div class="card-body">
           
             <div class="float-md-right">
-                <a href="/stockbarang/add"><button type="button" class="btn btn-success btn-sm">Tambah Stok Barang</button></a>
+                <a href="/stokbarang/add"><button type="button" class="btn btn-success btn-sm">Tambah Stok Barang</button></a>
             </div><br>
             <h4 class="card-title text-center mb-5">Tabel Stok Barang</h4>
             <table id="example" class="table table-bordered">
@@ -30,13 +30,13 @@
                   <th> Jenis </th>
                   <th> Merk </th>
                   <th> Ukuran </th>
-                  <th> Stock </th>
+                  <th> Stok </th>
                   <th> Satuan </th>
                   <th> Lokasi </th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($stockbarang as $no => $sb)
+                @foreach ($stokbarang as $no => $sb)
                 <tr>
                   @if ($no === 0) @endif
                   <td> {{$no+1}} </td>
@@ -44,7 +44,7 @@
                   <td> {{$sb->jenis}} </td>
                   <td> {{$sb->merk}} </td>
                   <td> {{$sb->ukuran}} </td>
-                  <td> {{$sb->stock}} </td>
+                  <td> {{$sb->stok}} </td>
                   <td> {{$sb->satuan}} </td>
                   <td> {{$sb->lokasi}} </td>
                 </tr>
