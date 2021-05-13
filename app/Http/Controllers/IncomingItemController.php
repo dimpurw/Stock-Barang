@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StockItem\StorePostRequest;
-use App\StockItems;
+use App\Http\Requests\IncomingItem\StorePostRequest;
+use App\IncomingItems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
-class StockItemController extends Controller
+class IncomingItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class StockItemController extends Controller
      */
     public function index()
     {
-        $stokbarang = StockItems::get();
-        return view('stok_barang.index', compact(['stokbarang']));
+        $barangmasuk = IncomingItems::get();
+        return view('barang_masuk.index', compact(['barangmasuk']));
     }
 
     /**
@@ -27,18 +27,24 @@ class StockItemController extends Controller
      */
     public function create()
     {
-        return view('stok_barang.add');
+        return view('barang_masuk.add');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(StorePostRequest $request)
     {
         if (isset($request->validator) && $request->validator->fails()) {
             return redirect()->back()->withErrors($request->validator);
         }
 
-        StockItems::create($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
-                                        'stok', 'satuan', 'lokasi'));
-        return redirect('/stokbarang');
+        IncomingItems::create($request->only('tanggal', 'nama_barang', 'jenis', 'merk', 'ukuran',
+                                        'jumlah', 'satuan'));
+        return redirect('/barangmasuk');
     }
 
     /**
@@ -61,8 +67,8 @@ class StockItemController extends Controller
     public function edit($id)
     {
         $id = Crypt::decrypt($id);
-        $stokbarang = StockItems::findOrFail($id);
-        return view('stok_barang.edit', compact(['stokbarang']));
+        $barangmasuk = IncomingItems::findOrFail($id);
+        return view('barang_masuk.edit', compact(['barangmasuk']));
     }
 
     /**
@@ -78,9 +84,9 @@ class StockItemController extends Controller
             return redirect()->back()->withErrors($request->validator);
         }
 
-        StockItems::findOrFail($id)->update($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
-                                                            'stock', 'satuan', 'lokasi'));
-        return redirect('/stokbarang');
+        IncomingItems::findOrFail($id)->update($request->only('tanggal', 'nama_barang', 'jenis', 'merk', 'ukuran',
+                                                            'jumlah', 'satuan'));
+        return redirect('/barangmasuk');
     }
 
     /**
@@ -92,7 +98,7 @@ class StockItemController extends Controller
     public function destroy($id)
     {
         $id = Crypt::decrypt($id);
-        StockItems::destroy($id);
-        return redirect('/stokbarang');   
+        IncomingItems::destroy($id);
+        return redirect('/barangmasuk'); 
     }
 }
