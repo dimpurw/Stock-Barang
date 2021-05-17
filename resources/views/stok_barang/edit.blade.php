@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Edit Stock Barang</h4>
-                    {{ Form::open(['url' => '/stokbarang/edit/'.$stokbarang->id.'/update', 'method' => 'post']) }}
+                    {{ Form::open(['route' => ['stokbarang.edit.update', $stokbarang->id]]) }}
                     {{ csrf_field() }}
                     <div class="form-group">
                         {{ Form::label('nama_barang', 'Nama Barang') }}
@@ -56,7 +56,7 @@
                         <span style="color:red;"> {{$errors->first('lokasi')}} </span>
                     </div>
                     {{ Form::submit('Save', ['class' => 'btn btn-primary mr-2']) }}
-                    <a href="/stokbarang"><button type="button" class="btn btn-light">Cancel</button></a>
+                    <a href="{{ route('stokbarang') }}"><button type="button" class="btn btn-light">Cancel</button></a>
                     {{ Form::close() }}
                 </div>
             </div>
