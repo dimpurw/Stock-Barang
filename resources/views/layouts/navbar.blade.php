@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/stokbarang">
+                <a class="nav-link" href="{{ route('stokbarang') }}">
                 <span class="menu-title">Stock Barang</span>
                 <i class="icon-briefcase menu-icon"></i>
                 </a>
@@ -66,8 +66,8 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="/barangmasuk">Barang Masuk</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/barangkeluar">Barang Keluar</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('barangmasuk') }}">Barang Masuk</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('barangkeluar') }}">Barang Keluar</a></li>
                 </ul>
                 </div>
             </li>

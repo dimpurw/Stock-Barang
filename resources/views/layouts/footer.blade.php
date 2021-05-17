@@ -18,10 +18,133 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.print.min.js"></script>
 <script>
 $(document).ready(function() {
-    var table = $('#example').DataTable( {
-        fixedHeader: true
+    var table = $('#BarangKeluar').DataTable( {
+        fixedHeader: true,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                title: 'Data Barang Keluar',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'pdf',
+                title: 'Data Barang Keluar',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'csv',
+                title: 'Data Barang Keluar',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'print',
+                title: 'Data Barang Keluar',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+        ],
+    } );
+} );
+
+$(document).ready(function() {
+    var table = $('#BarangMasuk').DataTable( {
+        fixedHeader: true,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                title: 'Data Barang Masuk',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'pdf',
+                title: 'Data Barang Masuk',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'csv',
+                title: 'Data Barang Masuk',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'print',
+                title: 'Data Barang Masuk',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+        ],
+    } );
+} );
+
+$(document).ready(function() {
+    var table = $('#StokBarang').DataTable( {
+        fixedHeader: true,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                title: 'Stok Barang',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'pdf',
+                title: 'Stok Barang',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'csv',
+                title: 'Stok Barang',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+            {
+                extend: 'print',
+                title: 'Stok Barang',
+                text: window.csvButtonTrans,
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7],
+                }
+            },
+        ],
     } );
 } );
 </script>
