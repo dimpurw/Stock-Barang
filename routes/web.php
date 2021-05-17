@@ -18,12 +18,34 @@ Route::get('/', function () {
 });
 
 // Stok Barang
-Route::get('/stokbarang', 'StockItemController@index');
-Route::get('/stokbarang/add', 'StockItemController@create');
-Route::post('/stokbarang/add/post', 'StockItemController@store');
-Route::get('/stokbarang/edit/{id}', 'StockItemController@edit');
-Route::post('/stokbarang/edit/{id}/update', 'StockItemController@update');
-Route::delete('/stokbarang/delete/{id}', 'StockItemController@destroy');
+Route::get('/stokbarang', 'StockItemController@index')->name('stokbarang');
+Route::prefix('stokbarang')->group(function () {
+    Route::get('/add', 'StockItemController@create')->name('stokbarang.add');
+    Route::post('/add/post', 'StockItemController@store')->name('stokbarang.add.post');
+    Route::get('/edit/{id}', 'StockItemController@edit')->name('stokbarang.edit');
+    Route::post('/edit/{id}/update', 'StockItemController@update')->name('stokbarang.edit.update');
+    Route::post('/delete/{id}', 'StockItemController@destroy')->name('stokbarang.delete');
+});
+
+// Barang Masuk
+Route::get('/barangmasuk', 'IncomingItemController@index')->name('barangmasuk');
+Route::prefix('barangmasuk')->group(function () {
+    Route::get('/add', 'IncomingItemController@create')->name('barangmasuk.add');
+    Route::post('/add/post', 'IncomingItemController@store')->name('barangmasuk.add.post');
+    Route::get('/edit/{id}', 'IncomingItemController@edit')->name('barangmasuk.edit');
+    Route::post('/edit/{id}/update', 'IncomingItemController@update')->name('barangmasuk.edit.update');
+    Route::post('/delete/{id}', 'IncomingItemController@destroy')->name('barangmasuk.delete');
+});
+
+// Barang Keluar
+Route::get('/barangkeluar', 'ExitItemController@index')->name('barangkeluar');
+Route::prefix('barangkeluar')->group(function () {
+    Route::get('/add', 'ExitItemController@create')->name('barangkeluar.add');
+    Route::post('/add/post', 'ExitItemController@store')->name('barangkeluar.add.post');
+    Route::get('/edit/{id}', 'ExitItemController@edit')->name('barangkeluar.edit');
+    Route::post('/edit/{id}/update', 'ExitItemController@update')->name('barangkeluar.edit.update');
+    Route::post('/delete/{id}', 'ExitItemController@destroy')->name('barangkeluar.delete');
+});
 
 Auth::routes();
 
