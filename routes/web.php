@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 // Stok Barang
-Route::get('/stokbarang', 'StockItemController@index')->name('stokbarang');
 Route::prefix('stokbarang')->group(function () {
+    Route::get('/', 'StockItemController@index')->name('stokbarang');
     Route::get('/add', 'StockItemController@create')->name('stokbarang.add');
     Route::post('/add/post', 'StockItemController@store')->name('stokbarang.add.post');
     Route::get('/edit/{id}', 'StockItemController@edit')->name('stokbarang.edit');
@@ -28,8 +28,8 @@ Route::prefix('stokbarang')->group(function () {
 });
 
 // Barang Masuk
-Route::get('/barangmasuk', 'IncomingItemController@index')->name('barangmasuk');
 Route::prefix('barangmasuk')->group(function () {
+    Route::get('/', 'IncomingItemController@index')->name('barangmasuk');
     Route::get('/add', 'IncomingItemController@create')->name('barangmasuk.add');
     Route::post('/add/post', 'IncomingItemController@store')->name('barangmasuk.add.post');
     Route::get('/edit/{id}', 'IncomingItemController@edit')->name('barangmasuk.edit');
@@ -38,8 +38,8 @@ Route::prefix('barangmasuk')->group(function () {
 });
 
 // Barang Keluar
-Route::get('/barangkeluar', 'ExitItemController@index')->name('barangkeluar');
 Route::prefix('barangkeluar')->group(function () {
+    Route::get('/', 'ExitItemController@index')->name('barangkeluar');
     Route::get('/add', 'ExitItemController@create')->name('barangkeluar.add');
     Route::post('/add/post', 'ExitItemController@store')->name('barangkeluar.add.post');
     Route::get('/edit/{id}', 'ExitItemController@edit')->name('barangkeluar.edit');
@@ -48,5 +48,3 @@ Route::prefix('barangkeluar')->group(function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
