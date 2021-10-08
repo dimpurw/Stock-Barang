@@ -21,24 +21,8 @@
             {{ Form::open(['route' => ['stokbarang.add.post']]) }}
               {{ csrf_field() }}
               <div class="form-group">
-                {{ Form::label('nama_barang', 'Nama Barang') }}
-                {{ Form::text('nama_barang', null, ['class' => ($errors->has('nama_barang')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Nama Barang']) }}
-                <span style="color:red;"> {{$errors->first('nama_barang')}} </span>
-              </div>
-              <div class="form-group">
-                {{ Form::label('jenis', 'Jenis') }}
-                {{ Form::text('jenis', null, ['class' => ($errors->has('jenis')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Jenis']) }}
-                <span style="color:red;"> {{$errors->first('jenis')}} </span>
-              </div>
-              <div class="form-group">
-                {{ Form::label('merk', 'Merk') }}
-                {{ Form::text('merk', null, ['class' => ($errors->has('merk')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'merk']) }}
-                <span style="color:red;"> {{$errors->first('merk')}} </span>
-              </div>
-              <div class="form-group">
-                {{ Form::label('ukuran', 'Ukuran') }}
-                {{ Form::text('ukuran', null, ['class' => ($errors->has('ukuran')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Ukuran']) }}
-                <span style="color:red;"> {{$errors->first('ukuran')}} </span>
+                {{ Form::label('items', 'Nama Barang') }}
+                {!! Form::select('items', $items, null, ['class' => 'form-control', 'placeholder' => 'Pilih Barang...']) !!}
               </div>
               <div class="form-group">
                 {{ Form::label('stok', 'Stok') }}
@@ -49,6 +33,11 @@
                 {{ Form::label('satuan', 'Satuan') }}
                 {{ Form::text('satuan', null, ['class' => ($errors->has('satuan')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Satuan']) }}
                 <span style="color:red;"> {{$errors->first('satuan')}} </span>
+              </div>
+              <div class="form-group">
+                {{ Form::label('harga', 'Harga') }}
+                {{ Form::number('harga', null, ['class' => ($errors->has('harga')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Harga']) }}
+                <span style="color:red;"> {{$errors->first('stok')}} </span>
               </div>
               <div class="form-group">
                 {{ Form::label('lokasi', 'Lokasi') }}

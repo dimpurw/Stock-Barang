@@ -54,10 +54,16 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('stokbarang') }}">
-                <span class="menu-title">Stock Barang</span>
-                <i class="icon-briefcase menu-icon"></i>
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Kelola Barang</span>
+                <i class="icon-basket menu-icon"></i>
                 </a>
+                <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('barang') }}">Barang</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('stokbarang') }}">Stock Barang</a></li>
+                </ul>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
