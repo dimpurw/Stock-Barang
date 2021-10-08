@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StockItem\StorePostRequest;
-use App\StockItem;
+use App\Http\Requests\Item\StorePostRequest;
 use App\Item;
+use App\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
-class StockItemController extends Controller
-{
-    /**
+class ItemController extends Controller
+{/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $stokbarang = StockItem::get();
-        return view('stok_barang.index', compact(['stokbarang']));
+        $barang = Item::get();
+        return view('barang.index', compact(['barang']));
     }
 
     /**
@@ -28,8 +27,8 @@ class StockItemController extends Controller
      */
     public function create()
     {
-        $items = Item::pluck('nama_barang', 'id');
-        return view('stok_barang.add', compact(['items']));
+        $units = Unit::pluck('satuan', 'id');
+        return view('barang.add', compact(['units']));
     }
 
     public function store(StorePostRequest $request)
@@ -37,10 +36,21 @@ class StockItemController extends Controller
         if (isset($request->validator) && $request->validator->fails()) {
             return redirect()->back()->withErrors($request->validator);
         }
-        
-        StockItem::create($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
-                                        'stok', 'satuan', 'lokasi'));
-        return redirect('/stokbarang');
+
+        $barang = $request->nama_barang;
+        $unit = $request->unit;
+        $cekbarang = Item::where('nama_barang',  $request->nama_barang)->first();
+        $cekunit = Item::where('unit_id',  $request->unit)->first();
+        if ($cekbarang AND $cekunit) {
+            return redirect('/barang')->with('gagal', 'gagal menambahkan barang, mohon maaf nama barang dan satuan sudah ada di database');
+        }else{
+            $items = new Item();
+            $items->nama_barang = $barang;
+            $items->unit_id = $unit;
+            $items->harga = $request->harga;
+            $items->save();
+            return redirect('/barang')->with('succes', 'berhasil menambahkan data barang');
+        }
     }
 
     /**
@@ -63,8 +73,8 @@ class StockItemController extends Controller
     public function edit($id)
     {
         $id = Crypt::decrypt($id);
-        $stokbarang = StockItem::findOrFail($id);
-        return view('stok_barang.edit', compact(['stokbarang']));
+        $barang = Item::findOrFail($id);
+        return view('barang.edit', compact(['barang']));
     }
 
     /**
@@ -80,9 +90,8 @@ class StockItemController extends Controller
             return redirect()->back()->withErrors($request->validator);
         }
 
-        StockItem::findOrFail($id)->update($request->only('nama_barang', 'jenis', 'merk', 'ukuran',
-                                                            'stock', 'satuan', 'lokasi'));
-        return redirect('/stokbarang');
+        Item::findOrFail($id)->update($request->only('nama_barang','satuan','harga'));
+        return redirect('/barang');
     }
 
     /**
@@ -94,7 +103,7 @@ class StockItemController extends Controller
     public function destroy($id)
     {
         $id = Crypt::decrypt($id);
-        StockItem::destroy($id);
-        return redirect('/stokbarang');   
+        Item::destroy($id);
+        return redirect('/barang');   
     }
 }

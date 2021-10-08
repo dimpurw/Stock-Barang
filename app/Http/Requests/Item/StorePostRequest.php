@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\StockItem;
+namespace App\Http\Requests\Item;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
@@ -26,9 +26,8 @@ class StorePostRequest extends FormRequest
     {
         return [
             'nama_barang' => 'required',
-            'stok' => 'integer|required',
-            'satuan' => 'required',
-            'lokasi' => 'required',
+            'unit' => 'required',
+            'harga' => 'required',
         ];
     }
 
