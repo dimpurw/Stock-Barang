@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStockItemsTable extends Migration
+class CreateUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,9 @@ class CreateStockItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_items', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang');
-            $table->string('jenis');
-            $table->string('merk');
-            $table->char('ukuran');
-            $table->integer('stok');
             $table->string('satuan');
-            $table->string('lokasi');
-            $table->timestamps();
         });
     }
 
@@ -33,6 +26,6 @@ class CreateStockItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stock_items');
+        Schema::dropIfExists('units');
     }
 }
