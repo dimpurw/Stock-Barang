@@ -17,6 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Barang
+Route::prefix('barang')->group(function () {
+    Route::get('/', 'ItemController@index')->name('barang');
+    Route::get('/add', 'ItemController@create')->name('barang.add');
+    Route::post('/add/post', 'ItemController@store')->name('barang.add.post');
+    Route::get('/edit/{id}', 'ItemController@edit')->name('barang.edit');
+    Route::post('/edit/{id}/update', 'ItemController@update')->name('barang.edit.update');
+    Route::post('/delete/{id}', 'ItemController@destroy')->name('barang.delete');
+});
+
 // Stok Barang
 Route::prefix('stokbarang')->group(function () {
     Route::get('/', 'StockItemController@index')->name('stokbarang');
