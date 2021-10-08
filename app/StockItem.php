@@ -4,8 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StockItems extends Model
+class StockItem extends Model
 {
     protected $table = 'stock_items';
     protected $guarded = [];
+
+    public function items()
+    {
+        return $this->hasOne(Item::class);    
+    }
 }
