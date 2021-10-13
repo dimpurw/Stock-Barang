@@ -26,8 +26,8 @@
                 <span style="color:red;"> {{$errors->first('nama_barang')}} </span>
               </div>
               <div class="form-group">
-                {{ Form::label('unit', 'Satuan') }}
-                {!! Form::select('unit', $units, null, ['class' => 'form-control', 'placeholder' => 'Pilih Satuan...']) !!}
+                {{ Form::label('unit_id', 'Satuan') }}
+                {!! Form::select('unit_id', $units, null, ['class' => 'form-control', 'placeholder' => 'Pilih Satuan...']) !!}
               </div>
               <div class="form-group">
                 {{ Form::label('harga', 'Harga') }}

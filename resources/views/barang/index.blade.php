@@ -53,7 +53,7 @@
                   @if ($no === 0) @endif
                   <td> {{$no+1}} </td>
                   <td> {{$sb->nama_barang}} </td>
-                  <td> {{$sb->unit_id}} </td>
+                  <td> {{$sb->unit->satuan}} </td>
                   <td> {{$sb->harga}} </td>
                   <td> <ul class="list-inline m-0">
                             <li class="list-inline-item">

@@ -26,9 +26,8 @@
                         <span style="color:red;"> {{$errors->first('nama_barang')}} </span>
                     </div>
                     <div class="form-group">
-                        {{ Form::label('satuan', 'Satuan') }}
-                        {{ Form::text('satuan', $barang->satuan, ['class' => ($errors->has('satuan')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Satuan']) }}
-                        <span style="color:red;"> {{$errors->first('satuan')}} </span>
+                        {{ Form::label('unit_id', 'Satuan') }}
+                        {!! Form::select('unit_id', $units, $barang->unit_id, ['class' => 'form-control', 'placeholder' => 'Pilih Satuan...']) !!}
                     </div>
                     <div class="form-group">
                         {{ Form::label('harga', 'Harga') }}
