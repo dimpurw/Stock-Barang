@@ -38,7 +38,7 @@ class ItemController extends Controller
         }
 
         $barang = $request->nama_barang;
-        $unit = $request->unit;
+        $unit = $request->unit_id;
         $cekbarang = Item::where('nama_barang',  $request->nama_barang)->first();
         $cekunit = Item::where('unit_id',  $request->unit)->first();
         if ($cekbarang AND $cekunit) {
@@ -73,8 +73,9 @@ class ItemController extends Controller
     public function edit($id)
     {
         $id = Crypt::decrypt($id);
+        $units = Unit::pluck('satuan', 'id');
         $barang = Item::findOrFail($id);
-        return view('barang.edit', compact(['barang']));
+        return view('barang.edit', compact(['barang','units']));
     }
 
     /**
@@ -90,7 +91,7 @@ class ItemController extends Controller
             return redirect()->back()->withErrors($request->validator);
         }
 
-        Item::findOrFail($id)->update($request->only('nama_barang','satuan','harga'));
+        Item::findOrFail($id)->update($request->only('nama_barang','unit_id','harga'));
         return redirect('/barang');
     }
 

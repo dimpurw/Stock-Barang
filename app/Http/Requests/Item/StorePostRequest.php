@@ -26,7 +26,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'nama_barang' => 'required',
-            'unit' => 'required',
+            'unit_id' => 'required',
             'harga' => 'required',
         ];
     }
