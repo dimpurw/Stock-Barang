@@ -9,8 +9,8 @@ class Item extends Model
     protected $table = 'items';
     protected $guarded = [];
 
-    public function stock()
+    public function unit()
     {
-        return $this->belongsTo(StockItem::class);    
+        return $this->belongsTo('App\Unit');    
     }
 }
