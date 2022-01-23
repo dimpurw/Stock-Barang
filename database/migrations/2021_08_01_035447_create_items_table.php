@@ -16,6 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('unit_id')->unsigned();
+            $table->bigInteger('kode_barang')->unique();
             $table->string('nama_barang');
             $table->integer('harga');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
