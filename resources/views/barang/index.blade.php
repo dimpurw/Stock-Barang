@@ -57,6 +57,9 @@
                   <td> {{$sb->harga}} </td>
                   <td> <ul class="list-inline m-0">
                             <li class="list-inline-item">
+                                <button class="btn btn-outline-info btn-sm rounded-0" type="button" data-toggle="modal" data-target="#item{{ $sb->id }}" data-placement="top" title="Barcode"><i class="fa fa-barcode"></i></button></a>
+                            </li>
+                            <li class="list-inline-item">
                                 <a href="{{ route('barang.edit', Crypt::encrypt($sb->id)) }}"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
                             </li>
                             <li class="list-inline-item">
@@ -68,6 +71,29 @@
                         </ul>
                   </td>
                 </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="item{{ $sb->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{$sb->nama_barang}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h5>{{$sb->nama_barang}}</h5>
+                        <h5>Harga: {{$sb->harga}}</h5>
+                        <div class="container" style="width: 65%;">{!! DNS1D::getBarcodeHTML(ucwords($sb->kode_barang), 'C128') !!}</div>
+                        <p style="letter-spacing: 5px;">{{$sb->kode_barang}}</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 @endforeach
               </tbody>
             </table>

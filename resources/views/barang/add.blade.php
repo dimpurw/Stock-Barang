@@ -21,6 +21,11 @@
             {{ Form::open(['route' => ['barang.add.post']]) }}
               {{ csrf_field() }}
               <div class="form-group">
+                {{ Form::label('kode_barang', 'Kode Barang') }}
+                {{ Form::number('kode_barang', null, ['class' => ($errors->has('kode_barang')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Kode Barang']) }}
+                <span style="color:red;"> {{$errors->first('kode_barang')}} </span>
+              </div>
+              <div class="form-group">
                 {{ Form::label('nama_barang', 'Nama Barang') }}
                 {{ Form::text('nama_barang', null, ['class' => ($errors->has('nama_barang')) ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'Nama Barang']) }}
                 <span style="color:red;"> {{$errors->first('nama_barang')}} </span>

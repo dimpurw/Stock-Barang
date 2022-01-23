@@ -6901,7 +6901,9 @@ a.close.disabled {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 0.9375rem; }
+  padding: 0.9375rem;
+  text-align: center;
+  width: 100%; }
 
 .modal-footer {
   display: -webkit-box;
