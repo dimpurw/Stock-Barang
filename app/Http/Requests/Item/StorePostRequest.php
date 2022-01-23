@@ -25,6 +25,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
+            'kode_barang' => 'required|unique:items',
             'nama_barang' => 'required',
             'unit_id' => 'required',
             'harga' => 'required',

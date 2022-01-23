@@ -37,16 +37,15 @@ class ItemController extends Controller
             return redirect()->back()->withErrors($request->validator);
         }
 
-        $barang = $request->nama_barang;
-        $unit = $request->unit_id;
         $cekbarang = Item::where('nama_barang',  $request->nama_barang)->first();
-        $cekunit = Item::where('unit_id',  $request->unit)->first();
+        $cekunit = Item::where('unit_id',  $request->unit_id)->first();
         if ($cekbarang AND $cekunit) {
             return redirect('/barang')->with('gagal', 'gagal menambahkan barang, mohon maaf nama barang dan satuan sudah ada di database');
         }else{
             $items = new Item();
-            $items->nama_barang = $barang;
-            $items->unit_id = $unit;
+            $items->kode_barang = $request->kode_barang;
+            $items->nama_barang = $request->nama_barang;
+            $items->unit_id = $request->unit_id;
             $items->harga = $request->harga;
             $items->save();
             return redirect('/barang')->with('succes', 'berhasil menambahkan data barang');
